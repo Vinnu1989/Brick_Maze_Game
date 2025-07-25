@@ -1,0 +1,110 @@
+import pygame
+pygame.init()
+
+WINDOW_WIDTH, WINDOW_HEIGHT = 830, 660
+display = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+pygame.display.set_caption("Brick Maze Game")
+
+player_color = (0, 0, 0)
+player_x, player_y = 60, 60
+player_width, player_height = 30, 30
+
+concrete_color = (169, 169, 169)
+
+brick_color = "brown"
+
+running = True
+while running:
+    display.fill((135, 206, 235))
+
+
+    brick_0 = pygame.draw.rect(display, brick_color, (0, 0, 30, 660))
+    concrete_0 = pygame.draw.rect(display, concrete_color, (15, 0, 5, 660))
+
+    brick_1 = pygame.draw.rect(display, brick_color, (300, 0, 30, 400))
+    concrete_1 = pygame.draw.rect(display, concrete_color, (315, 0, 5, 400))
+
+    brick_2 = pygame.draw.rect(display, brick_color, (150, 100, 30, 425))
+    concrete_2 = pygame.draw.rect(display, concrete_color, (165, 100, 5, 425))
+
+    brick_3 = pygame.draw.rect(display, brick_color, (150, 525, 430, 30))
+    concrete_3 = pygame.draw.rect(display, concrete_color, (150, 540, 430, 5))
+
+    brick_4 = pygame.draw.rect(display, brick_color, (300, 525, 30, 135))
+    concrete_4 = pygame.draw.rect(display, concrete_color, (315, 525, 5, 135))
+
+    brick_5 = pygame.draw.rect(display, brick_color, (580, 400, 30, 155))
+    concrete_5 = pygame.draw.rect(display, concrete_color, (595, 400, 5, 155))
+
+    brick_6 = pygame.draw.rect(display, brick_color, (450, 100, 30, 300))
+    concrete_6 = pygame.draw.rect(display, concrete_color, (465, 100, 5, 300))
+
+    brick_7 = pygame.draw.rect(display, brick_color, (610, 480, 80, 30))
+    concrete_7 = pygame.draw.rect(display, concrete_color, (610, 495, 80, 5))
+
+    brick_8 = pygame.draw.rect(display, brick_color, (690, 305, 30, 205))
+    concrete_8 = pygame.draw.rect(display, concrete_color, (705, 305, 5, 205))
+
+    brick_9 = pygame.draw.rect(display, brick_color, (480, 305, 230, 30))
+    concrete_9 = pygame.draw.rect(display, concrete_color, (480, 320, 230, 5))
+
+    brick_10 = pygame.draw.rect(display, brick_color, (800, 0, 30, 660))
+    concrete_10 = pygame.draw.rect(display, concrete_color, (815, 0, 5, 660))
+
+    brick_11 = pygame.draw.rect(display, brick_color, (610, 630, 115, 30))
+    concrete_11 = pygame.draw.rect(display, concrete_color, (610, 645, 115, 5))
+
+    brick_12 = pygame.draw.rect(display, brick_color, (720, 580, 30, 135))
+    concrete_12 = pygame.draw.rect(display, concrete_color, (735, 580, 5, 135))
+
+    brick_13 = pygame.draw.rect(display, brick_color, (622, 0, 30, 200))
+    concrete_13 = pygame.draw.rect(display, concrete_color, (637, 0, 5, 200))
+
+    brick_14 = pygame.draw.rect(display, brick_color, (0, 0, 830, 30))
+    concrete_14 = pygame.draw.rect(display, concrete_color, (0, 15, 830, 5))
+
+    brick_15 = pygame.draw.rect(display, brick_color, (0, 630, 830, 30))
+    concrete_15 = pygame.draw.rect(display, concrete_color, (0, 645, 830, 5))
+
+
+    cover_0 = pygame.draw.rect(display, "blue", (30, 30, 120, 600))
+    cover_1 = pygame.draw.rect(display, "red", (150, 30, 150, 100))
+    cover_2 = pygame.draw.rect(display, "orange", (180, 130, 120, 395))
+    cover_3 = pygame.draw.rect(display, "yellow", (300, 400, 280, 125))
+    cover_4 = pygame.draw.rect(display, "purple", (450, 30, 172, 70))
+    cover_5 = pygame.draw.rect(display, "pink", (480, 100, 142, 205))
+    cover_6 = pygame.draw.rect(display, "light green", (330, 30, 120, 370))
+    cover_7 = pygame.draw.rect(display, "green", (622, 200, 178, 105))
+    cover_8 = pygame.draw.rect(display, "magenta", (652, 30, 148, 170))
+    cover_9 = pygame.draw.rect(display, "red", (720, 305, 80, 275))
+    cover_10 = pygame.draw.rect(display, "orange", (610, 510, 110, 120))
+    cover_11 = pygame.draw.rect(display, "yellow", (750, 580, 50, 50))
+    cover_12 = pygame.draw.rect(display, "green", (330, 555, 280, 75))
+    cover_13 = pygame.draw.rect(display, "light green", (150, 555, 150, 75))
+    cover_14 = pygame.draw.rect(display, "blue", (480, 335, 210, 65))
+    cover_15 = pygame.draw.rect(display, "purple", (610, 400, 80, 80))
+
+    
+    player_square = pygame.draw.rect(display, player_color, (player_x, player_y, player_width, player_height))
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+            
+    if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                player_x = player_x - 0.8
+            if event.key == pygame.K_RIGHT:
+                player_x = player_x + 0.8
+            if event.key == pygame.K_UP:
+                player_y = player_y - 0.8
+            if event.key == pygame.K_DOWN:
+                player_y = player_y + 0.8 
+
+    if player_square.collidelistall((brick_0, brick_1, brick_2, brick_3, brick_4, brick_5, brick_6, brick_7, brick_8, brick_9, brick_10, brick_11, brick_12, brick_13, brick_14, brick_15)):
+        player_x, player_y = 60, 60
+    if player_square.collidelistall((concrete_0, concrete_1, concrete_2, concrete_3, concrete_4, concrete_5, concrete_6, concrete_7, concrete_8, concrete_9, concrete_10, concrete_11, concrete_12, concrete_13, concrete_14, concrete_15)):
+        player_x, player_y = 60, 60
+
+    pygame.display.flip()
+pygame.QUIT
